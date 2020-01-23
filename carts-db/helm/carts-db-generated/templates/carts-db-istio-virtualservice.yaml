@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  creationTimestamp: null
+  name: carts-db
+spec:
+  gateways:
+  - sockshop-production-gateway.sockshop-production
+  - mesh
+  hosts:
+  - carts-db.sockshop-production.35.202.209.235.xip.io
+  - carts-db
+  - carts-db.sockshop-production
+  http:
+  - route:
+    - destination:
+        host: carts-db.sockshop-production.svc.cluster.local
